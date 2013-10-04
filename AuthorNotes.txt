@@ -1,0 +1,2 @@
+The notes and the debugging process will go here.
+I will describe my interesting finds and my annoying faults here.
