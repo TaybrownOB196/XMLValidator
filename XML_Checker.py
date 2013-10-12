@@ -31,6 +31,9 @@ class XML_Checker(object):
 	def __fill_tag_list(tag_name, level):
  		self.tag_list[tag_name] = level
  	
+ 	def check_for_encoding():
+ 		pass
+ 	
 	def xml_check_attrib():
 		pass
     
