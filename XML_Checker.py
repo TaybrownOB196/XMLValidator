@@ -25,7 +25,7 @@ class XML_Checker(object):
   	#This static method checks the filename to see if it ends with a ".xml" exstension.
   	#If True, then the file is supposed to be an XML file.
   	#If False, then either the file's extension was not added or the file is not an XML file.
-	def __xml_file_check(filename):
+	def __xml_file_check(self, filename):
 		if filename[-4:] != ".xml":
   			return False
   		else:
@@ -34,12 +34,12 @@ class XML_Checker(object):
   	#This method is used to fill the tag list with an element tag from the XML that we are
   	#currently looking at. The tag list will be a ditionary that holds the name of the 
   	#element and its nest level in the XML file.
-	def __fill_tag_list(tag_name, level):
+	def __fill_tag_list(self, tag_name, level):
  		self.tag_list[tag_name] = level
  	
  	#This method will be used to check to make sure that the first line in the XML file is
  	#the version number and language encoding.
- 	def check_for_declaration():
+ 	def check_for_declaration(self):
  		self.xml_file.seek(0)
  		firstline = self.xml_file.readline()
  		if firstline[:2] != "<?":
@@ -50,20 +50,20 @@ class XML_Checker(object):
  		self.declaration = firstline[:num+2]
  		return True
  		
- 	def get_version():
- 		test = self.declaration.find("\"", 2, len(self.declaration)
+ 	def get_version(self):
+ 		test = self.declaration.find("\"", 2, len(self.declaration))
  		if test == -1:
  			return False
  		if self.declaration[test+1:test+3] != "1.":
  			return False
  		return self.declaration[test+1:self.declaration.find("\"", test+3, len(self.declaration))]
  		
-	def xml_check_attrib():
+	def xml_check_attrib(self):
 		pass
     
-	def xml_check_nest():
-    	self.xml_file.seek(len(self.declaration)+1)
+	def xml_check_nest(self):
+    		self.xml_file.seek(len(self.declaration)+1)
     	
 	
-	def xml_close_check():
-    	self.xml_file.close()
+	def xml_close_check(self):
+    		self.xml_file.close()
